@@ -1,3 +1,4 @@
+//не смогла арешить задачу
 #include<cstdio>
 #include<cmath>
 

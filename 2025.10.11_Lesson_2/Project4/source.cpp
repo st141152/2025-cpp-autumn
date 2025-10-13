@@ -9,38 +9,45 @@ int main(int argc, char** argv)
 	int e = 0;
 	int f = 0;
 	scanf_s("%d %d %d %d %d %d", &a, &b, &c, &d, &e, &f);
-	int s1, m1, l1;  // минимальный, средний, максимальный размер первой коробки
-	s1 = a;
-	if (b < s1) s1 = b;
-	if (c < s1) s1 = c;
-	l1 = a;
-	if (b > l1) l1 = b;
-	if (c > l1) l1 = c;
-	m1 = a + b + c - s1 - l1;
-	int s2, m2, l2;
-	s2 = d;
-	if (e < s2) s2 = e;
-	if (f < s2) s2 = f;
-	l2 = d;
-	if (e > l2) l2 = e;
-	if (f > l2) l2 = f;
-	m2 = d + e + f - s2 - l2;
-	if (s1 == s2 && m1 == m2 && l1 == l2) 
+	if (a > b)
+	{
+		a = a + b; b = a - b; a = a - b;
+	}
+	if (a > c)
+	{
+		a = a + c; c = a - c; a = a - c;
+	}
+	if (b > c)
+	{
+		b = b + c; c = b - c; b = b - c;
+	}
+	if (d > e)
+	{
+		d = d + e; e = d - e; d = d - e;
+	}
+	if (d > f)
+	{
+		d = d + f; f = d - f; d = d - f;
+	}
+	if (e > f)
+	{
+		e = e + f; f = e - f; e = e - f;
+	}
+	if (a == d && b == e && c == f)
 	{
 		printf("Boxes are equal\n");
 	}
-	else if (s1 <= s2 && m1 <= m2 && l1 <= l2) 
+	else if (a <= d && b <= e && c <= f)
 	{
 		printf("The first box is smaller than the second one\n");
 	}
-	else if (s2 <= s1 && m2 <= m1 && l2 <= l1) 
+	else if (d <= a && e <= b && f <= c)
 	{
 		printf("The first box is larger than the second one\n");
 	}
-	else 
+	else
 	{
 		printf("Boxes are incomparable\n");
 	}
-
 	return 0;
 }

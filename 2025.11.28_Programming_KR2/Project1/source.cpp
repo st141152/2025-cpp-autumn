@@ -122,9 +122,7 @@ int main(int argc, char** argv) {
 	scanf_s("%d", &n);
 	clear_input_buffer();
 
-
 	Book* books = create_books(n);
-
 
 	for (int i = 0; i < n; i++) {
 		printf("\nÊíèãà %d:\n", i + 1);
@@ -163,7 +161,6 @@ int main(int argc, char** argv) {
 		printf("\n%d. ", i + 1);
 		print_book(&books[i]);
 	}
-
 
 	Book* best = find_book_with_most_authors(books, n);
 	if (best) {

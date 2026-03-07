@@ -35,6 +35,7 @@ public:
 		data = newData;
 		capacity = newCapacity;
 	}
+
 	void add(double value)
 	{
 		if (size == capacity)
@@ -45,7 +46,7 @@ public:
 		++size;
 	}
 
-	int get(int index)
+	double get(int index)
 	{
 		if (0 <= index && index < size)
 		{
@@ -54,7 +55,7 @@ public:
 		return -1;
 	}
 
-	void set(int index, int value)
+	void set(int index, double value)
 	{
 		if (0 <= index && index < size)
 		{
@@ -65,15 +66,18 @@ public:
 			add(value);
 		}
 	}
+
 	void print()
 	{
 		std::cout << "[" << size << "/" << capacity << "]{";
 		for (int i = 0; i < size; ++i)
 		{
-			std::cout << data[i] << "";
+			std::cout << data[i];
+			if (i < size - 1) std::cout << ", ";
 		}
 		std::cout << "}" << std::endl;
 	}
+
 	void remove(int index)
 	{
 		if (index < 0 || index >= size)
@@ -86,7 +90,44 @@ public:
 		}
 		--size;
 	}
+
+	void insert(int index, double value)
+	{
+		if (index < 0 || index > size)
+		{
+			std::cout << index << std::endl;
+			return;
+		}
+		if (size == capacity)
+		{
+			resize(capacity * 2);
+		}
+		for (int i = size; i > index; --i)
+		{
+			data[i] = data[i - 1];
+		}
+		data[index] = value;
+		++size;
+	}
+
+	void clear()
+	{
+		size = 0;
+	}
+
+	bool contains(double value)
+	{
+		for (int i = 0; i < size; ++i)
+		{
+			if (data[i] == value)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 };
+
 int main()
 {
 	ArrayList list;
